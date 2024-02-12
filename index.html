@@ -8,7 +8,7 @@
 <body>
     <div class="container">
         <h2>Kullanıcı Kayıt Formu</h2>
-        <form action="kaydet.txt" method="post">
+        <form action="kaydet.php" method="post">
             <label for="username">Kullanıcı Adı:</label>
             <input type="text" id="username" name="username" required>
             <label for="email">E-posta:</label>
@@ -20,3 +20,18 @@
     </div>
 </body>
 </html>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Verileri bir dosyaya yazma
+    $file = 'kullanici_bilgileri.txt';
+    $data = "Kullanıcı Adı: $username\nE-posta: $email\nŞifre: $password\n\n";
+    file_put_contents($file, $data, FILE_APPEND);
+
+    echo 'Veriler başarıyla kaydedildi.';
+}
+?>
