@@ -8,7 +8,7 @@
 <body>
     <div class="container">
         <h2>Kullanıcı Kayıt Formu</h2>
-        <form id="registrationForm" onsubmit="submitForm(event)">
+        <form action="kaydet.php" method="post">
             <label for="username">Kullanıcı Adı:</label>
             <input type="text" id="username" name="username" required>
             <label for="email">E-posta:</label>
@@ -18,36 +18,5 @@
             <button type="submit">Kayıt Ol</button>
         </form>
     </div>
-
-    <script>
-        function submitForm(event) {
-            event.preventDefault(); // Sayfanın yeniden yüklenmesini engelle
-            
-            var formData = {
-                username: document.getElementById("username").value,
-                email: document.getElementById("email").value,
-                password: document.getElementById("password").value
-            };
-
-            // Form verilerini bir sunucuya gönderme
-            fetch('register.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => {
-                if (response.ok) {
-                    console.log('Veriler başarıyla kaydedildi.');
-                } else {
-                    console.error('Veriler kaydedilirken bir hata oluştu.');
-                }
-            })
-            .catch(error => {
-                console.error('Hata:', error);
-            });
-        }
-    </script>
 </body>
 </html>
