@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anket Oluştur</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Anket Formu</h2>
+        <form id="surveyForm">
+            <label for="question">Soru:</label>
+            <input type="text" id="question" name="question" required>
+            <label for="option1">Seçenek 1:</label>
+            <input type="text" id="option1" name="options[]" required>
+            <label for="option2">Seçenek 2:</label>
+            <input type="text" id="option2" name="options[]" required>
+            <!-- İsteğe bağlı olarak daha fazla seçenek eklenebilir -->
+            <input type="button" value="Gönder" onclick="submitSurvey()">
+        </form>
+    </div>
+
+    <script>
+        function submitSurvey() {
+            var formData = {
+                question: document.getElementById("question").value,
+                options: []
+            };
+
+            // Seçeneklerin alınması
+            var optionInputs = document.getElementsByName("options[]");
+            for (var i = 0; i < optionInputs.length; i++) {
+                formData.options.push(optionInputs[i].value);
+            }
+
+            // FormData nesnesini kullanarak JSON formatında gönderme
+            fetch('submit_survey.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Anket gönderildi:', data);
+                alert('Anket gönderildi, teşekkür ederiz!');
+            })
+            .catch((error) => {
+                console.error('Hata:', error);
+                alert('Anket gönderilirken bir hata oluştu!');
+            });
+        }
+    </script>
+</body>
+</html>
