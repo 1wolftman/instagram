@@ -3,48 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İletişim</title>
+    <title>Kullanıcı Kayıt Formu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h2>İletişim Formu</h2>
-        <form id="contactForm">
-            <label for="name">İsim:</label>
-            <input type="text" id="name" name="name" required>
+        <h2>Kullanıcı Kayıt Formu</h2>
+        <form action="register.php" method="post">
+            <label for="username">Kullanıcı Adı:</label>
+            <input type="text" id="username" name="username" required>
             <label for="email">E-posta:</label>
             <input type="email" id="email" name="email" required>
-            <label for="message">Mesaj:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-            <input type="button" value="Gönder" onclick="submitForm()">
+            <label for="password">Şifre:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Kayıt Ol</button>
         </form>
     </div>
-
-    <script>
-        function submitForm() {
-            var formData = {
-                name: document.getElementById("name").value,
-                email: document.getElementById("email").value,
-                message: document.getElementById("message").value
-            };
-
-            // FormData nesnesini kullanarak JSON formatında gönderme
-            fetch('sendmail.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Form gönderildi:', data);
-                alert('Form gönderildi, teşekkür ederiz!');
-            })
-            .catch((error) => {
-                console.error('Hata:', error);
-                alert('Form gönderilirken bir hata oluştu!');
-            });
-        }
-    </script>
 </body>
 </html>
