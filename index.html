@@ -3,39 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kayıt & Oturum Açma Formu</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        form {
-            max-width: 400px;
-            margin: 0 auto;
-        }
-        input[type="text"],
-        input[type="password"],
-        input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <title>Kayıt Formu</title>
 </head>
 <body>
 
 <h2>Kayıt Formu</h2>
-<form action="/kayit" method="post">
+<form id="kayitFormu">
     <label for="kullaniciAdi">Kullanıcı Adı:</label>
     <input type="text" id="kullaniciAdi" name="kullaniciAdi" required>
 
@@ -45,16 +18,23 @@
     <input type="submit" value="Kayıt Ol">
 </form>
 
-<h2>Oturum Açma Formu</h2>
-<form action="/oturum-ac" method="post">
-    <label for="kullaniciAdiGiris">Kullanıcı Adı:</label>
-    <input type="text" id="kullaniciAdiGiris" name="kullaniciAdiGiris" required>
+<script>
+document.getElementById("kayitFormu").addEventListener("submit", function(event) {
+    event.preventDefault(); // Formun varsayılan davranışını engelle (sayfayı yenileme)
+    
+    var kullaniciAdi = document.getElementById("kullaniciAdi").value;
+    var sifre = document.getElementById("sifre").value;
 
-    <label for="sifreGiris">Şifre:</label>
-    <input type="password" id="sifreGiris" name="sifreGiris" required>
+    // Veriyi metin dosyasına yaz
+    var veri = "Kullanıcı Adı: " + kullaniciAdi + ", Şifre: " + sifre + "\n";
+    var blob = new Blob([veri], {type: "text/plain"});
 
-    <input type="submit" value="Oturum Aç">
-</form>
+    var link = document.createElement("a");
+    link.href = window.URL.createObjectURL(blob);
+    link.download = "kullanici_bilgileri.txt";
+    link.click();
+});
+</script>
 
 </body>
 </html>
