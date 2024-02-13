@@ -1,1 +1,60 @@
-hello world
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt & Oturum Açma Formu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Kayıt Formu</h2>
+<form action="/kayit" method="post">
+    <label for="kullaniciAdi">Kullanıcı Adı:</label>
+    <input type="text" id="kullaniciAdi" name="kullaniciAdi" required>
+
+    <label for="sifre">Şifre:</label>
+    <input type="password" id="sifre" name="sifre" required>
+
+    <input type="submit" value="Kayıt Ol">
+</form>
+
+<h2>Oturum Açma Formu</h2>
+<form action="/oturum-ac" method="post">
+    <label for="kullaniciAdiGiris">Kullanıcı Adı:</label>
+    <input type="text" id="kullaniciAdiGiris" name="kullaniciAdiGiris" required>
+
+    <label for="sifreGiris">Şifre:</label>
+    <input type="password" id="sifreGiris" name="sifreGiris" required>
+
+    <input type="submit" value="Oturum Aç">
+</form>
+
+</body>
+</html>
