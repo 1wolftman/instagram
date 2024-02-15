@@ -4,37 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kayıt Formu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
 
-<h2>Kayıt Formu</h2>
-<form id="kayitFormu">
-    <label for="kullaniciAdi">Kullanıcı Adı:</label>
-    <input type="text" id="kullaniciAdi" name="kullaniciAdi" required>
+<div class="container">
+    <h2>Kayıt Formu</h2>
+    <form id="kayitFormu" action="veri_gonder.php" method="POST">
+        <label for="kullaniciAdi">Kullanıcı Adı:</label>
+        <input type="text" id="kullaniciAdi" name="kullaniciAdi" required>
 
-    <label for="sifre">Şifre:</label>
-    <input type="password" id="sifre" name="sifre" required>
+        <label for="sifre">Şifre:</label>
+        <input type="password" id="sifre" name="sifre" required>
 
-    <input type="submit" value="Kayıt Ol">
-</form>
-
-<script>
-document.getElementById("kayitFormu").addEventListener("submit", function(event) {
-    event.preventDefault(); // Formun varsayılan davranışını engelle (sayfayı yenileme)
-    
-    var kullaniciAdi = document.getElementById("kullaniciAdi").value;
-    var sifre = document.getElementById("sifre").value;
-
-    // Veriyi metin dosyasına yaz
-    var veri = "Kullanıcı Adı: " + kullaniciAdi + ", Şifre: " + sifre + "\n";
-    var blob = new Blob([veri], {type: "text/plain"});
-
-    var link = document.createElement("a");
-    link.href = window.URL.createObjectURL(blob);
-    link.download = "kullanici_bilgileri.txt";
-    link.click();
-});
-</script>
+        <input type="submit" value="Kayıt Ol">
+    </form>
+</div>
 
 </body>
 </html>
