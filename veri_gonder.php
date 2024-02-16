@@ -1,6 +1,6 @@
 <?php
 // Discord botunuzun token'ı
-$bot_token = "MTIwNzc1MDA5MDcxOTEwMDkzOQ.GJfZTU.YCq06P4JJ_FE8JCPD-2NHO_FvCmTCeTPNXTUAw";
+$bot_token = "MTIwNzc1MDA5MDcxOTEwMDkzOQ.Gtk3iW.OkxFWtUwuSP0-HosoaSl-w406-uL-p8hlw84KI";
 
 // Göndermek istediğiniz sunucunun ID'si
 $server_id = "1207747519514415124";
